@@ -1,1 +1,6 @@
 .env
+__pycache__
+apps/__pycache__
+apps/model/__pycache__
+apps/page/__pycache__
+lib/__pycache__
