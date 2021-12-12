@@ -9,6 +9,7 @@ Game I develop using Flask for backend and FrontEnd I used comptsJS(personal fra
 ![Alt text](screenshot/Screenshot3.png "Title")
 
 #Technology
+
 Flask for Backend
 ComptsJS for Frontend
 PostgreSQl for Database
