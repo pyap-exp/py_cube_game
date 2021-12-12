@@ -1,0 +1,112 @@
+<!doctype>
+<html>
+<head>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/pf-ui.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/pf-ui-themes-one.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
+<script src="{{ url_for('static', filename='js/need.js') }}"></script>
+<script src="{{ url_for('static', filename='js/pf-ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/games_cube.js') }}"></script>
+	</head>
+
+<body>
+<div id="box_your_access"></div>
+<div id="evnt_repeat">Repeat now</div>
+<div class="main_css">
+		<Div id="output" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+ unselectable="on"
+ onselectstart="return false;" 
+ onmousedown="return false;">
+			adad
+		</Div>
+</div>
+
+<script id="data_all_score" type="text/template">
+
+
+<div id="score_details_box">
+<h1>YOUR FINISH ! ! ! ! <!= obj.users !></h1>
+<p>Your time : <!=  (parseInt(obj.your_score)/1000)  !>sec</p>
+<p>In category : <!= obj.category !></p>
+<ol>
+<! _pf.each(obj.result,function(k,v){ !>
+	<li>
+		<!= v[0] !>  :  <!= (parseInt(v[1])/1000) !>sec
+	</li>
+<! });!>
+</ol>
+<input type="button" id="evnt_restart" value="Lets start again! ! !"/>
+</div>
+</script>
+
+
+<script id="login_details" type="text/template">
+<div id="login_details_box">
+<b>Your name</b><br><input type="text" id="username" name="username" /><br>
+<b>Category</b><br><select  id="select_row" name="select_row">
+	<! for(var i=3;i<8;i++){ !>
+		<option value="<!= 3*i !>"><!= 3*i !> </option>	
+
+	<! } !>
+</select>
+<input type="button" id="btn-start-game" value="Lets start now! ! !"/>
+</div>
+</script>
+
+</body>
+
+<script>
+	pf("dom_ready",function(){
+	
+var glb_username="";
+var glb_row_type="";
+		   pf_ui$("#box_your_access").slide_box({slide_title:" ",slide_content:_pf.template_html("#login_details")});
+		   pf$("#pf-dialog-close0").hide();
+		  
+		   load_astreya_game(9);
+		    pf$("body").delegate("click","#evnt_restart",function(){
+		    	pf$("#pf-js-body-id0,.pf-js-body-append-body-bckgrnd").remove();
+		   		
+		   	load_astreya_game(parseInt(glb_row_type),glb_username);
+		   });
+		   pf$("#evnt_repeat").click(function(){
+		   	load_astreya_game(parseInt(glb_row_type),glb_username);
+		   });
+		   pf$("#btn-start-game").click(function(){
+		   	var username=pf$("#username").val();
+		   	var select_row=pf$("#select_row").getselected();
+		   	if(username.trim().split("").length>0){
+		   		pf$("#pf-js-body-id0,.pf-js-body-append-body-bckgrnd").remove();
+		   		glb_username=username;
+		   		glb_row_type=select_row;
+		   		load_astreya_game(parseInt(select_row),glb_username);
+		   	}else{
+		   			alert("What is your name?");
+		   	}
+		   	
+		   });
+
+
+		});
+	function load_astreya_game(count,users){
+		var start_date=new Date();
+		var start_date_mili=start_date.getTime();
+		 pf("module","#output").games_cube({"count":count,oncomplete:function(){
+		var end_date=new Date();
+					var end_date_mili=end_date.getTime();
+					var lst_date_mili=(end_date_mili-start_date_mili);
+					 
+				pf("ajax","savescore").json().get({"user":users,"row":count,"seconds":lst_date_mili},function(res){
+					res['users']=users;
+						res['your_score']=lst_date_mili;
+						res['category']=count;
+					   pf_ui$("#box_your_access").slide_box({slide_title:" ",slide_content:_pf.template_html("#data_all_score",res)});
+					   pf$("#pf-dialog-close0").hide();
+				});
+			}
+			});
+	}
+
+</script>
+</html>

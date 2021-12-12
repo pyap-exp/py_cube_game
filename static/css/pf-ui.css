@@ -1,0 +1,136 @@
+html,body {height:100%}
+body {padding:0;margin: 0;position:relative}
+footer,nav{display: block;}
+
+
+
+.pf_panel_1{width:100%}
+.pf_panel_2{width:48%}
+.pf_panel_3{width:30%}
+.pf-content-body-80,.pf-content-body-100{height:auto;position:relative}
+.pf-content-footer-80,.pf-content-footer-100{position:relative}
+.pf-content-body-80,.pf-content-footer-80{width:80%;}
+.pf-content-body-100,.pf-content-footer-100{width:100%;}
+/* Navigation menu */
+
+.pf-nav-menu ul {padding:0;margin:0}
+.pf-nav-menu ul li{display:inline-table;padding:2px 5px 2px 5px;}
+.pf-nav-menu ul li>ul{display:none}
+.pf-nav-menu ul li:hover {
+		
+	}
+.pf-nav-menu li:hover>ul {
+background-color:#fff;
+		display: block;
+		position:absolute;
+	}
+/* Table */ 
+
+.pf-table-content-side tbody tr td:nth-child(odd){color:#fff;font-weight:bold;min-height:30px;padding:5px}
+.pf-table-content-side tbody tr td:nth-child(even){vertical-align:top;padding:5px}
+
+
+.pf-table-content-list thead tr th,.pf-table_content_scroll-x thead tr th{color:#fff;padding:5px}
+.pf-table-content-list tbody tr td,.pf-table_content_scroll-x tbody tr td{padding:5px;word-wrap:break-word;height:50px !important;text-align:center;font-size:15px}
+	
+
+/* pf js ui design */
+.pf-js-body-append-body-bckgrnd{z-index:99999;position: fixed;
+	width:100%;height:100%;
+
+			}
+.pf-js-body-append-body-content{
+			position:absolute;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+/*  border:1px solid #ccc; */
+		z-index:999999;
+			}
+#pf-dialog-close0 {
+    font-weight: bolder;
+    font-size: 31px;
+}			
+.pf-js-pop-label{position:absolute;z-index:99999999;}
+/* Mobile first queries */
+@media (max-width: 600px) {
+.pf_panel_1,.pf_panel_2,.pf_panel_3,.pf-content-body-80,.pf-content-body-100{width:98% !important;padding:1% !important;word-break:break-word }
+.pf-content-body,.pf-content-footer-80,.pf-content-footer-100{width:98%;padding:1% !important;}
+body[pf-active="true"] {}
+.pf-content-body-80,.pf-content-body-100{display:inline-table}
+
+.pf-table_content_scroll-x{display:block}
+	.pf-table_content_scroll-x tbody{display:block;overflow-x:scroll;width:auto;position:relative;white-space:nowrap}
+	.pf-table_content_scroll-x thead{float:left}
+	.pf-table_content_scroll-x thead tr th{display:block;margin:1px;border-bottom:1px dotted #fff;}
+	.pf-table_content_scroll-x tbody tr td{height:20px;display:block;margin:1px;padding:5px;border-bottom:1px dotted #fff;}
+	.pf-table_content_scroll-x tbody tr{display:inline-block;vertical-align:top}
+	.pf-table-content-list {width:90%}
+	.pf-table-content-list table, 
+	.pf-table-content-list tbody, 
+	.pf-table-content-list th, 
+	.pf-table-content-list td, 
+	.pf-table-content-list tr { 
+		display: block; 
+	}
+	.pf-table-content-list thead tr{display:none}
+	.pf-table-content-list tr { border: 1px solid #ccc; }
+ 
+	.pf-table-content-list tbody tr td { 
+		/* Behave  like a "row" */
+		
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 35%; 
+		white-space: normal;
+		text-align:left;
+		width: auto; 
+		height:100%
+	}
+ 		
+		.pf-table-content-list tbody tr td:before { 
+		/* Behave  like a "row" */
+		position: absolute;
+		/* Top/left values mimic padding */
+		background-color:#98275e;
+		color:#fff;
+		border-top:1px solid #eee;
+		top: 0px;
+		left: 0px;
+		width: 30%; 
+		padding-right: 10px; 
+		padding:5px;
+		white-space: nowrap;
+		word-wrap:break-word;
+		text-align:left;
+		font-weight: bold;
+		height:100%
+	}
+	.pf-table-content-side tbody tr td{width:auto !important;display:block}
+	.pf-table-content-list tbody tr td:before { content: attr(data-title); }
+
+
+	/* pf js ui design */
+	.pf-js-body-append-body,.pf-js-body-append-body-content{width:100% !important;height:100%	}
+
+}
+
+/* Larger than mobile */
+@media (min-width: 100px) {}
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+/* pf-ui default design */
+.pf-ui-cls-toggle-display-tab{border: 10px solid #000}
